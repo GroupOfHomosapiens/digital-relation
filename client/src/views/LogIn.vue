@@ -191,6 +191,7 @@ export default {
 					.post('/auth/register')
 					.then(res => {
 						console.log(res);
+						// this.$cookies.set('token', res.data.token);
 					})
 					.catch(err => {
 						console.log(err);
