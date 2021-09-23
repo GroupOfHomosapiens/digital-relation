@@ -3,13 +3,17 @@
 import Vue from 'vue';
 import axios from 'axios';
 
+const match = document.cookie.match(new RegExp('(^| )' + 'token' + '=([^;]+)'));
+const token = match ? match[2] : '';
+
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 let config = {
-	baseURL: process.env.baseURL || process.env.apiUrl || 'localhost:3000/api',
+	baseURL:
+		process.env.baseURL || process.env.apiUrl || 'http://localhost:3000/api',
 	// timeout: 60 * 1000, // Timeout
 	// withCredentials: true, // Check cross-site Access-Control
 };
