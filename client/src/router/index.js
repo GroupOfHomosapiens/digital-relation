@@ -46,6 +46,7 @@ const routes = [
 	},
 	{
 		path: '*',
+		name: 'Not Found',
 		component: NotFound,
 	},
 ];
