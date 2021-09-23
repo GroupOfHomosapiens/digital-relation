@@ -7,6 +7,7 @@ import RelationOrder from '../views/RelationOrder.vue';
 import Layout from '../views/pages/user/layout.vue';
 import Index from '../views/pages/user/index.vue';
 import User from '../views/pages/user/user.vue';
+import NotFound from '../views/NotFound.vue';
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,10 @@ const routes = [
 		// { path: '/', component: Index },
 		// { path: ':id', component: User },
 		// ],
+	},
+	{
+		path: '*',
+		component: NotFound,
 	},
 ];
 
