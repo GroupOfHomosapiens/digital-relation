@@ -179,6 +179,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: 'Login',
     data: () => ({
@@ -192,15 +193,67 @@
       items1: [ 'Ykdysadyýet', 'Maliýe', 'Menejment', 'Marketing' ],
       checkbox: false,
     }),
+   /* created() {
+
+         console.log('///----------------------')
+         axios.get('http://localhost:8000/sanctum/csrf-cookie', { withCredentials: true })
+    .then(response => {
+        console.log(console.log('json', response));
+    });
+    },*/
     methods: {
-      validate(e) {
+
+        validate: /*async*/ function(e) {
+
+        if(this.username === '' || this.password === '' || this.select === null || this.select1 === null || this.checkbox === false) {
+          e.preventDefault();
+          this.$refs.form.validate()
+        } else {  
+          const auth = { select: this.select, select1: this.select1, username: this.username, password: this.password, checkbox: this.checkbox }
+          console.log('------------------',auth);
+          const url = 'http://localhost:8000/api/auth/register'
+
+          /*try {
+          
+            const res = await
+            axios.get('http://localhost:8000/sanctum/csrf-cookie').then(res => {
+              axios.post(url, { auth })
+              .then(res => res.data)
+            })
+             
+          } catch(err) {
+            console.log(err)
+          }*/
+
+
+            axios.get('http://localhost:8000/sanctum/csrf-cookie').then(response => {
+              axios.post(url, { auth },
+                  {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Accept': 'application/json',
+      
+    }
+}
+                    )
+              .then(console.log('gitdi'))
+            })
+
+        }
+
+
+      },
+
+     /* validate(e) {
+
         if(this.username === '' || this.password === '' || this.select === null || this.select1 === null || this.checkbox === false) {
           e.preventDefault();
           this.$refs.form.validate()
         } else {
           this.$router.push('/menu')
         }
-      },
+      },*/
+
     },
   }
 </script>
