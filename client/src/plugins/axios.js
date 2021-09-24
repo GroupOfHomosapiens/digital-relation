@@ -13,7 +13,7 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
 let config = {
 	baseURL:
-		process.env.baseURL || process.env.apiUrl || 'http://localhost:3000/api',
+		process.env.baseURL || process.env.apiUrl || 'http://localhost:8000/',
 	// timeout: 60 * 1000, // Timeout
 	// withCredentials: true, // Check cross-site Access-Control
 };

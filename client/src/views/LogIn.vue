@@ -188,7 +188,7 @@ export default {
 		login() {
 			this.$axios.get('/sanctum/csrf-cookie').then(() => {
 				this.$axios
-					.post('/auth/register')
+					.post('/api/auth/register')
 					.then(res => {
 						console.log(res);
 						// this.$cookies.set('token', res.data.token);
